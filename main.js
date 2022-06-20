@@ -32,6 +32,10 @@ function showBackToTopButtonOnScroll() {
   }
 }
 
+function toggleHeart() {
+  document.querySelector('.heart-icon').classList.toggle('active')
+}
+
 // Initialize Swiper
 
 var swiper = new Swiper('.mySwiper', {

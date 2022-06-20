@@ -458,6 +458,16 @@ body.menu-expanded button {
   border-radius: 0.8rem;
 }
 
+.game-info svg:hover {
+  cursor: pointer;
+  fill: var(--nintendo-red);
+}
+
+.game-info svg.active {
+  cursor: pointer;
+  fill: var(--nintendo-red);
+}
+
 .swiper-button-next,
 .swiper-button-prev {
   opacity: 0;
