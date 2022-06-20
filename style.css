@@ -1,0 +1,976 @@
+@charset "UTF-8";
+
+/*--------------------- GENERAL ------------------------*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+
+  --nintendo-red: #e60012;
+  --blue-gradient: linear-gradient(180deg, #3946a0 0%, #727ecd 100%);
+  --light-gray: #c8c8c8;
+  --medium-gray: #484848;
+  --dark-gray: #2d2d2d;
+  --off-white: #f7f7f7;
+
+  --nav-height: 9.2rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: 'Montserrat', sans-serif;
+  color: var(--medium-gray);
+
+  overflow: overlay;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: bottom;
+}
+
+h1 {
+  font-size: 4.8rem;
+}
+
+h2 {
+  font-size: 2rem;
+  text-align: center;
+  padding-bottom: 1.6rem;
+}
+
+h3 {
+  font-weight: 600;
+  font-size: 1.6rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+p {
+  font-size: 1.6rem;
+}
+
+.cta-button {
+  font-size: 2rem;
+  color: var(--medium-gray);
+  font-weight: 600;
+
+  background-color: white;
+  padding: 2rem 2.8rem;
+  border-radius: 0.8rem;
+}
+
+.cta-button:hover {
+  background-color: var(--nintendo-red);
+  color: white;
+  filter: brightness(1.5);
+}
+
+.red-link {
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--nintendo-red);
+  display: inline-block;
+}
+
+.red-link:hover {
+  color: var(--medium-gray);
+}
+
+.dark-link {
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--dark-gray);
+  display: inline-block;
+  margin-top: 1.4rem;
+
+  border-bottom: 2px solid var(--dark-gray);
+  font-size: 1.6rem;
+}
+
+.dark-link:hover {
+  color: white;
+  border-color: white;
+}
+
+.wrapper {
+  padding-inline: 2.4rem;
+  margin-inline: auto;
+
+  max-width: 100vw;
+}
+
+section {
+  padding-block: 10rem;
+}
+
+/*--------------------- NAVIGATION MENU ------------------------*/
+
+nav {
+  display: flex;
+  height: var(--nav-height);
+  position: fixed;
+
+  top: 0;
+  width: 100vw;
+
+  z-index: 100;
+}
+
+nav .wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-block: 2.2rem;
+  width: 100%;
+}
+
+nav.scroll {
+  background-color: white;
+  box-shadow: 0px 3px 4px 1px rgba(0, 0, 0, 0.1);
+}
+
+nav.scroll .logo path {
+  fill: black;
+}
+
+nav.scroll .open-menu path {
+  stroke: black;
+}
+
+.open-menu {
+  height: 4.8rem;
+  width: 5.3rem;
+}
+
+nav .menu,
+nav .close-menu {
+  position: fixed;
+}
+
+/*--------------------- HIDDEN MENU ------------------------*/
+body.menu-expanded {
+  overflow: hidden;
+}
+
+body.menu-expanded > :not(nav) {
+  visibility: hidden;
+}
+
+.menu,
+.close-menu,
+body.menu-expanded .open-menu {
+  opacity: 0;
+  visibility: hidden;
+}
+
+body.menu-expanded .menu,
+body.menu-expanded .close-menu {
+  opacity: 1;
+  visibility: visible;
+}
+
+.menu {
+  transform: translateY(100%);
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+body.menu-expanded .menu {
+  top: 0;
+  left: 0;
+  background-color: var(--nintendo-red);
+
+  width: 100vw;
+  height: 100vh;
+  padding-top: var(--nav-height);
+
+  transition: transform 300ms;
+  transform: translateY(0);
+}
+
+.menu ul {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu ul li a {
+  color: white;
+  font-size: 2.8rem;
+}
+
+.menu .cta-button {
+  display: inline-block;
+  margin: auto;
+
+  margin-top: 4.8rem;
+  margin-bottom: 8rem;
+}
+
+body.menu-expanded .logo,
+body.menu-expanded button {
+  position: relative;
+  z-index: 10;
+}
+
+/*--------------------- HEAD BANNER ------------------------*/
+
+#head-banner {
+  position: relative;
+  padding: 0;
+}
+
+#head-banner .wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+#head-banner::before {
+  content: '';
+  display: block;
+  position: absolute;
+  z-index: -1;
+
+  background-color: var(--nintendo-red);
+
+  width: 100%;
+  height: calc(var(--nav-height) + 72%);
+}
+
+#head-banner header {
+  color: white;
+  width: 80%;
+}
+
+#head-banner h1 {
+  padding-top: calc(var(--nav-height) + 4rem);
+}
+
+#head-banner p {
+  padding-top: 4rem;
+}
+
+#head-banner button {
+  margin-top: 2rem;
+}
+
+/*--------------------- WELCOME VIDEO ------------------------*/
+
+#welcome-video h2 {
+  text-align: left;
+}
+
+#welcome-video .wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.video-container {
+  position: relative;
+
+  padding-bottom: 56.25%;
+  padding-top: 3rem;
+  height: 0;
+  overflow: hidden;
+}
+
+.video-container iframe,
+.video-container object,
+.video-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+}
+
+/*--------------------- MODES ------------------------*/
+
+#modes {
+  background-color: var(--medium-gray);
+  color: white;
+  text-align: center;
+  padding-bottom: 0;
+}
+
+.mode-title {
+  background-color: var(--dark-gray);
+  display: flex;
+  height: 5.7rem;
+  align-items: center;
+  gap: 2.8rem;
+
+  padding-block: 1.2rem;
+}
+
+#modes .content {
+  margin-top: 5.2rem;
+}
+
+.mode-title h3 {
+  font-size: 1.8rem;
+}
+
+/*--------------------- JOY-CON ------------------------*/
+
+#joy-con {
+  background: var(--blue-gradient);
+  color: white;
+  text-align: center;
+  padding-bottom: 0;
+}
+
+.img-container {
+  overflow: hidden;
+}
+
+#joy-con img {
+  width: min(66.2rem, 140%);
+  padding-top: 4.2rem;
+}
+
+/*--------------------- JOY-CON INFO ------------------------*/
+
+#joy-con-info .wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+}
+
+#joy-con-info h3,
+#joy-con-info p {
+  font-size: 1.6rem;
+}
+
+#joy-con-info img {
+  margin-bottom: 3.6rem;
+}
+
+#joy-con-info p {
+  padding-top: 1.4rem;
+}
+
+/*--------------------- MULTIPLAYER ------------------------*/
+
+#multiplayer {
+  background-color: var(--nintendo-red);
+  color: white;
+  padding-bottom: 0;
+  padding-top: 5rem;
+}
+
+#multiplayer .list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+#multiplayer p {
+  font-size: 1.6rem;
+  padding-top: 0.8rem;
+}
+
+#multiplayer h2 {
+  padding-bottom: 3.6rem;
+}
+
+/*--------------------- GAMES ------------------------*/
+
+#games {
+  padding-bottom: 0;
+}
+
+#games .content {
+  display: flex;
+  gap: 3rem;
+  padding: 5rem 2rem;
+}
+
+.game-card {
+  width: 27.8rem;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.game-card img {
+  border-radius: 0.8rem;
+}
+
+.game-card h3 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.game-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.game-tag h4 {
+  display: inline-block;
+  padding: 0.8rem 1.2rem;
+
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--light-gray);
+
+  border: 2px solid var(--light-gray);
+  border-radius: 0.8rem;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  opacity: 0;
+}
+
+#games .swiper-pagination-bullet-active {
+  background: var(--nintendo-red);
+}
+
+/*--------------------- SYS FEATURES SECTION ------------------------*/
+
+#sys-features p,
+#sys-features h3 {
+  font-size: 1.6rem;
+}
+
+#sys-features .content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-top: 3.6rem;
+}
+
+.feature-container {
+  display: flex;
+  gap: 3.2rem;
+  align-items: center;
+}
+
+.feature-container img {
+  width: 6.5rem;
+  height: 6.5rem;
+}
+
+.feature-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+/*-------------------- PRODUCT BANNER SECTION -----------------------*/
+
+#product-banner {
+  background-color: var(--light-gray);
+  padding-block: 0 4rem;
+}
+
+#product-banner img {
+  width: 80%;
+  display: block;
+  margin: auto;
+  padding-bottom: 2rem;
+}
+
+#product-banner h2 {
+  font-size: 4rem;
+  font-weight: 600;
+  text-align: left;
+}
+
+#product-banner p {
+  font-size: 2.4rem;
+}
+
+#product-banner .wrapper,
+#product-banner .container {
+  display: flex;
+  flex-direction: column;
+}
+
+#product-banner .container {
+  gap: 4rem;
+}
+
+#product-banner .content {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+/*------------------- NINTENDO FAMILY SECTION ----------------------*/
+
+#join-nintendo h3 {
+  text-align: center;
+  font-weight: 600;
+  font-size: 2.4rem;
+  padding-bottom: 4rem;
+}
+
+/*------------------- FOOTER ----------------------*/
+
+footer {
+  background-color: var(--nintendo-red);
+}
+
+footer img {
+  width: 15rem;
+}
+
+footer p {
+  color: white;
+  background-color: var(--medium-gray);
+
+  font-size: 1.4rem;
+  line-height: 150%;
+}
+
+footer .wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 2.4rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 2rem;
+}
+
+/*---------------- BACK TO TOP BUTTON ------------------*/
+
+#backToTopButton {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 3rem;
+  z-index: 8;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateY(100%);
+  transition: 200ms;
+}
+
+#backToTopButton.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0); /*posição inicial*/
+}
+
+#backToTopButton:hover {
+  filter: brightness(1.5);
+}
+
+/*------------------- MEDIA QUERIES ----------------------*/
+
+@media (min-width: 768px) {
+  /*------------------- GENERAL ----------------------*/
+  h1 {
+    font-size: 5.6rem;
+  }
+
+  h2 {
+    font-size: 2.4rem;
+    padding-bottom: 1.6rem;
+  }
+
+  p {
+    font-size: 2rem;
+  }
+
+  .wrapper {
+    padding-inline: 4rem;
+  }
+  /*------------------- HEAD BANNER ----------------------*/
+
+  section#head-banner .wrapper {
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 2rem;
+  }
+
+  section#head-banner img {
+    width: min(50%, 67.8rem);
+    align-self: center;
+    padding-top: calc(var(--nav-height) + 2rem);
+    padding-left: 2rem;
+  }
+
+  section#head-banner p {
+    width: 40%;
+  }
+
+  section#head-banner header {
+    width: min(50%, 44.6rem);
+  }
+
+  section#head-banner::before {
+    height: calc(var(--nav-height) + 85%);
+  }
+
+  /*------------------- WELCOME VIDEO ----------------------*/
+
+  section#welcome-video .wrapper {
+    flex-direction: row;
+    gap: 3rem;
+  }
+
+  section#welcome-video header {
+    flex-basis: 50%;
+  }
+
+  section#welcome-video .video-container {
+    position: relative;
+
+    padding-bottom: 25%;
+    overflow: hidden;
+    width: 50vw;
+  }
+
+  section#welcome-video .video-container iframe,
+  section#welcome-video .video-container object,
+  section#welcome-video .video-container embed {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+  }
+
+  /*------------------- MODES ----------------------*/
+
+  section#modes header {
+    width: 60%;
+    margin: auto;
+  }
+
+  section#modes .content {
+    display: flex;
+  }
+
+  section#modes .mode .wrapper {
+    padding-inline: 2rem;
+  }
+
+  /*------------------- JOY-CON ----------------------*/
+  section#joy-con header {
+    width: 40%;
+    margin: auto;
+  }
+
+  /*------------------- JOY-CON INFO ----------------------*/
+
+  section#joy-con-info .wrapper {
+    margin-inline: 14.2rem;
+    gap: 10rem;
+  }
+
+  /*------------------- MULTIPLAYER ----------------------*/
+  section#multiplayer .wrapper {
+    margin-inline: 14.2rem;
+  }
+
+  /*------------------- GAMES ----------------------*/
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    opacity: 1;
+
+    border-radius: 0.8rem;
+    padding: 1.6rem 2.2rem;
+
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(6px);
+  }
+
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    content: '';
+    background-image: url("data:image/svg+xml,%3Csvg width='18' height='30' viewBox='0 0 18 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 3L3 15L15 27' stroke='%23484848' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+
+    color: rgba(0, 0, 0, 0);
+    height: 3rem;
+    width: 1.8rem;
+  }
+
+  .swiper-button-next::after {
+    transform: rotate(0.5turn);
+  }
+
+  /*------------------- SYSTEM FEATURES ----------------------*/
+
+  section#sys-features {
+    padding-bottom: 20rem;
+  }
+
+  section#sys-features .content {
+    margin-inline: 14.2rem;
+  }
+
+  /*------------------- PRODUCT BANNER ----------------------*/
+
+  section#product-banner .wrapper {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+
+  section#product-banner .container {
+    justify-content: center;
+    padding-block: 4rem;
+  }
+
+  section#product-banner img {
+    width: min(48.8rem, 50%);
+    margin: 0;
+  }
+
+  section#product-banner .content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  /*------------------- NINTENDO FAMILY ----------------------*/
+
+  section#join-nintendo {
+    padding-top: 18rem;
+  }
+
+  section#join-nintendo h3 {
+    font-size: 3.6rem;
+    padding-bottom: 5rem;
+  }
+
+  section#join-nintendo .wrapper {
+    width: 80rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  /*------------------- GENERAL ----------------------*/
+  nav#navigation .wrapper * {
+    margin: 0;
+    padding: 0;
+    visibility: initial;
+    display: initial;
+    opacity: initial;
+    flex-direction: initial;
+    position: initial;
+    font-size: initial;
+    transform: initial;
+    color: initial;
+    background-color: initial;
+    font-weight: initial;
+    filter: initial;
+  }
+
+  nav#navigation .close-menu,
+  nav#navigation .open-menu {
+    display: none;
+  }
+
+  nav#navigation .menu .cta-button {
+    padding: 1.8rem 6rem;
+    background-color: white;
+
+    font-weight: 600;
+  }
+
+  nav#navigation.scroll .menu .cta-button {
+    padding: 1.8rem 6rem;
+    background-color: var(--nintendo-red);
+    color: white;
+
+    font-weight: 600;
+  }
+
+  nav#navigation .menu .cta-button:hover {
+    background-color: var(--nintendo-red);
+    filter: brightness(1.5);
+    color: white;
+  }
+
+  nav#navigation .menu {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8.4rem;
+  }
+  nav#navigation .menu li a {
+    color: white;
+  }
+
+  nav#navigation .menu li a:hover {
+    color: black;
+    font-weight: 400;
+  }
+
+  nav#navigation .menu ul {
+    display: flex;
+    gap: 8.4rem;
+  }
+
+  nav#navigation.scroll .menu li a {
+    color: black;
+  }
+
+  nav#navigation.scroll .menu li a:hover {
+    color: var(--nintendo-red);
+    font-weight: 400;
+  }
+
+  h1 {
+    font-size: 6.4rem;
+  }
+
+  /*------------------- MODES ----------------------*/
+
+  section#modes .mode {
+    position: relative;
+  }
+  section#modes .mode::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    display: block;
+    background-color: var(--medium-gray);
+    opacity: 0.6;
+  }
+
+  section#modes .mode:hover::after,
+  section#modes .mode-title:hover {
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+
+  section#modes .mode-title {
+    z-index: 5;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    padding: 0;
+  }
+
+  section#modes .mode-title section#modes .mode {
+    position: relative;
+  }
+
+  .mode-title {
+    position: absolute;
+    top: 40%;
+    width: 100%;
+  }
+  /*------------------- JOY-CON INFO ----------------------*/
+
+  section#joy-con-info {
+    margin-block: 10rem;
+  }
+
+  section#joy-con-info img {
+    margin-bottom: 0;
+    width: min(48.3rem, 50%);
+  }
+
+  section#joy-con-info .wrapper {
+    margin-inline: 14.2rem;
+    gap: 21rem;
+  }
+
+  .joy-con-container {
+    display: flex;
+    gap: 3rem;
+  }
+
+  .joy-con-container:nth-child(odd) {
+    flex-direction: row-reverse;
+  }
+
+  /*------------------- MULTIPLAYER ----------------------*/
+
+  section#multiplayer .content {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+  }
+
+  section#multiplayer .list-container {
+    padding-bottom: 5rem;
+  }
+
+  section#multiplayer img {
+    width: 50%;
+    align-self: flex-end;
+  }
+
+  section#multiplayer .wrapper {
+    margin-inline: 4rem;
+  }
+
+  /*------------------- SYSTEM FEATURES ----------------------*/
+  section#sys-features .content {
+    width: 50%;
+    margin-right: 0;
+    margin-left: auto;
+  }
+  section#sys-features .wrapper {
+    position: relative;
+  }
+
+  section#sys-features .wrapper::before {
+    content: url(./media/nintendo-switch-2.png);
+    /* height: 35.4rem; */
+    position: absolute;
+    bottom: 0;
+    transform: translate(-20%);
+  }
+
+  /*------------------- PRODUCT BANNER ----------------------*/
+
+  section#product-banner h2 {
+    font-size: 6.4rem;
+  }
+}
